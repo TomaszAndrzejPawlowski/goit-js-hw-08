@@ -1,1 +1,0 @@
-{"mappings":"AACAA,QAAQC,IADQ","sources":["src/index.js"],"sourcesContent":["const message = 'Hello World!';\nconsole.log(message);\n"],"names":["console","log"],"version":3,"file":"index.15670b99.js.map"}
