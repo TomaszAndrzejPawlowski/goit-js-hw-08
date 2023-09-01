@@ -9,9 +9,7 @@ try {
   const parsedFeedbackState = JSON.parse(savedFeedbackState);
   feedbackForm.email.value = parsedFeedbackState.email;
   feedbackForm.message.value = parsedFeedbackState.message;
-} catch (error) {
-  console.log("Inputs haven't been filled yet.");
-}
+} catch (error) {}
 
 const saveInLocalStorage = event => {
   const {
