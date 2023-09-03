@@ -4,12 +4,14 @@ const inputObj = {};
 
 const feedbackForm = document.querySelector('.feedback-form');
 
-try {
+const onReload = () => {
   const savedFeedbackState = localStorage.getItem('feedback-form-state');
   const parsedFeedbackState = JSON.parse(savedFeedbackState);
-  feedbackForm.email.value = parsedFeedbackState.email;
-  feedbackForm.message.value = parsedFeedbackState.message;
-} catch (error) {}
+  if (parsedFeedbackState) {
+    feedbackForm.email.value = parsedFeedbackState.email;
+    feedbackForm.message.value = parsedFeedbackState.message;
+  }
+};
 
 const saveInLocalStorage = event => {
   const {
@@ -22,10 +24,13 @@ const saveInLocalStorage = event => {
 
 const submitEvent = event => {
   event.preventDefault();
+  if (feedbackForm.email.value === '' || feedbackForm.message.value === '') {
+    return alert('Fill all fields to send!');
+  }
   event.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
   console.log(inputObj);
 };
-
+onReload();
 feedbackForm.addEventListener('input', throttle(saveInLocalStorage), 500);
 feedbackForm.addEventListener('submit', submitEvent);

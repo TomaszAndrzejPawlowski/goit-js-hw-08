@@ -17,11 +17,11 @@ galleryItems.forEach(picture => {
 </a></li>`
   );
 });
-for (let i = 0; i < galleryItems.length; i++) {
-  let link = gallery.childNodes[i].firstChild;
-  link.style.height = '100%';
-  link.style.display = 'block';
-}
+
+gallery.childNodes.forEach(item => {
+  item.firstChild.style.height = '100%';
+  item.firstChild.style.display = 'block';
+});
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionSelector: 'img',

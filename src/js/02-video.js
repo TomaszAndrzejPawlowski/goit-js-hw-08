@@ -13,7 +13,9 @@ player.on(
     );
   }, 1000)
 );
-
-const savedVideoplayerTime = localStorage.getItem('videoplayer-current-time');
-
-player.setCurrentTime(savedVideoplayerTime);
+player
+  .setCurrentTime(localStorage.getItem('videoplayer-current-time'))
+  .then(function (seconds) {
+    seconds = 0;
+  })
+  .catch(function () {});
